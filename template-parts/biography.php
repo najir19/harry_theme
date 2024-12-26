@@ -32,13 +32,13 @@ $author_linkedin = get_the_author_meta('linkedin_url');
 
         <div class="postbox__author-social d-flex align-items-center">
             <?php if (!empty($author_facebook)): ?>
-                <a href="<?php echo esc_url($author_facebook); ?>"><i class="fa-brands fa-facebook-f"></i></a>
+                <a target="_blank" <?php echo esc_url($author_facebook); ?>"><i class="fa-brands fa-facebook-f"></i></a>
             <?php endif ?>
             <?php if (!empty($author_twitter)): ?>
-                <a href="<?php echo esc_url($author_twitter); ?>"><i class="fa-brands fa-twitter"></i></a>
+                <a target="_blank" <?php echo esc_url($author_twitter); ?>"><i class="fa-brands fa-twitter"></i></a>
             <?php endif ?>
             <?php if (!empty($author_linkedin)): ?>
-                <a href="<?php echo esc_url($author_linkedin); ?>"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a target="_blank" <?php echo esc_url($author_linkedin); ?>"><i class="fa-brands fa-linkedin-in"></i></a>
             <?php endif ?>
         </div>
     </div>

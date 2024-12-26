@@ -199,3 +199,35 @@ function harry_social_share()
     </a>
 <?php
 }
+
+
+// display post view counter
+
+// Track post views
+function track_post_views()
+{
+    if (is_single()) {
+        global $post;
+        $post_id = $post->ID;
+
+        // Use a consistent meta key
+        $views = get_post_meta($post_id, 'post_views', true);
+
+        // Default to 0 if no views
+        $views = $views ? intval($views) : 0;
+
+        // Increment the views
+        $views++;
+        update_post_meta($post_id, 'post_views', $views);
+    }
+}
+add_action('wp_head', 'track_post_views');
+
+// Display post views
+function display_post_view()
+{
+    if (is_single()) {
+        $post_views = get_post_meta(get_the_ID(), 'post_views', true); // Use the same meta key
+        echo esc_html($post_views ? $post_views : 0);
+    }
+}
