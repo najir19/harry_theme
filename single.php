@@ -190,7 +190,7 @@ get_header();
                                         <?php endwhile; ?>
                                     <?php endif; ?>
 
-                                    <div class="postbox__comment-wrapper">
+                                    <!-- <div class="postbox__comment-wrapper">
                                         <div class="postbox__comment mb-95">
                                             <h3 class="postbox__comment-title">Comments (2)</h3>
                                             <ul>
@@ -294,7 +294,7 @@ get_header();
                                                 </div>
                                             </form>
                                         </div>
-                                    </div>
+                                    </div> -->
 
 
 
