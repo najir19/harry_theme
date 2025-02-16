@@ -1,5 +1,4 @@
 <?php
-
 // Register Latest Posts Widget
 function harry_register_latest_posts_widget()
 {
@@ -15,7 +14,7 @@ class Harry_Latest_Posts_Widget extends WP_Widget
     {
         parent::__construct(
             'harry_latest_posts', // Widget ID
-            __('Harry Latest Posts', 'harry'), // Widget Name
+            __('Latest Posts', 'harry'), // Widget Name
             array('description' => __('Displays latest blog posts', 'harry'))
         );
     }
@@ -25,15 +24,17 @@ class Harry_Latest_Posts_Widget extends WP_Widget
     {
         echo $args['before_widget'];
 
-        // Get the title from the widget settings
+        // Get the title and post count from the widget settings
         $title = !empty($instance['title']) ? $instance['title'] : __('Latest Posts', 'harry');
+        $post_count = !empty($instance['post_count']) ? (int)$instance['post_count'] : 5;
+
         if ($title) {
             echo $args['before_title'] . esc_html($title) . $args['after_title'];
         }
 
         // Query latest posts
         $latest_posts = new WP_Query(array(
-            'posts_per_page' => 3, // Adjust as needed
+            'posts_per_page' => $post_count,
             'post_status'    => 'publish'
         ));
 
@@ -46,7 +47,6 @@ class Harry_Latest_Posts_Widget extends WP_Widget
                             if (has_post_thumbnail()) {
                                 the_post_thumbnail('thumbnail', ['alt' => get_the_title()]);
                             } else {
-                                // Default image if no thumbnail
                                 echo '<img src="' . esc_url(get_template_directory_uri() . '/assets/img/blog/sidebar/blog-sm-1.jpg') . '" alt="No image available">';
                             }
                             ?>
@@ -75,10 +75,11 @@ class Harry_Latest_Posts_Widget extends WP_Widget
         echo $args['after_widget'];
     }
 
-    // Backend Widget Form (Title Input)
+    // Backend Widget Form (Title and Post Count Input)
     public function form($instance)
     {
         $title = !empty($instance['title']) ? $instance['title'] : __('Latest Posts', 'harry');
+        $post_count = !empty($instance['post_count']) ? (int)$instance['post_count'] : 5;
         ?>
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php _e('Title:', 'harry'); ?></label>
@@ -86,6 +87,13 @@ class Harry_Latest_Posts_Widget extends WP_Widget
                 name="<?php echo esc_attr($this->get_field_name('title')); ?>"
                 type="text"
                 value="<?php echo esc_attr($title); ?>">
+        </p>
+        <p>
+            <label for="<?php echo esc_attr($this->get_field_id('post_count')); ?>"><?php _e('Number of Posts:', 'harry'); ?></label>
+            <input class="widefat" id="<?php echo esc_attr($this->get_field_id('post_count')); ?>"
+                name="<?php echo esc_attr($this->get_field_name('post_count')); ?>"
+                type="number"
+                value="<?php echo esc_attr($post_count); ?>" min="1">
         </p>
 <?php
     }
@@ -95,6 +103,8 @@ class Harry_Latest_Posts_Widget extends WP_Widget
     {
         $instance = $old_instance;
         $instance['title'] = !empty($new_instance['title']) ? sanitize_text_field($new_instance['title']) : '';
+        $instance['post_count'] = !empty($new_instance['post_count']) ? absint($new_instance['post_count']) : 5;
         return $instance;
     }
 }
+?>
