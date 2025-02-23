@@ -320,3 +320,58 @@ function harry_social_section()
     );
 }
 harry_social_section();
+
+
+
+// harry 404 section 
+function harry_404_section()
+{
+    new \Kirki\Section(
+        'harry_404_section',
+        [
+            'title' => esc_html__('Harry 404 Section', 'harry'),
+            'description' => esc_html__('Harry 404 Section', 'harry'),
+            'panel' => 'harry_panel',
+            'priority' => 160,
+        ]
+    );
+    new \Kirki\Field\Text(
+        [
+            'settings' => 'harry_404_title',
+            'label' => esc_html__('404 Main title', 'harry'),
+            'section' => 'harry_404_section',
+            'default' => esc_html__('Oops! Page not found
+            ', 'harry'),
+            'priority' => 10,
+        ]
+    );
+    new \Kirki\Field\Text(
+        [
+            'settings' => 'harry_404_description',
+            'label' => esc_html__('404 Description', 'harry'),
+            'section' => 'harry_404_section',
+            'default' => esc_html__("Whoops, this is embarassing. Looks like the page you were looking for wasn't found.
+            ", 'harry'),
+            'priority' => 10,
+        ]
+    );
+    new \Kirki\Field\Text(
+        [
+            'settings' => 'harry_404_button',
+            'label' => esc_html__('404 Button Text', 'harry'),
+            'section' => 'harry_404_section',
+            'default' => esc_html__('Back to Home', 'harry'),
+            'priority' => 10,
+        ]
+    );
+    new \Kirki\Field\Text(
+        [
+            'settings' => 'harry_404_button_url',
+            'label' => esc_html__('404 button url', 'harry'),
+            'section' => 'harry_404_section',
+            'default' => esc_html__('#', 'harry'),
+            'priority' => 10,
+        ]
+    );
+}
+harry_404_section();

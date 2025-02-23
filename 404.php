@@ -2,6 +2,11 @@
 
 get_header();
 
+$harry_404_title = get_theme_mod('harry_404_title', 'Oops! Page not found');
+$harry_404_description = get_theme_mod('harry_404_description', "Whoops, this is embarassing. Looks like the page you were looking for wasn't found");
+$harry_404_button = get_theme_mod('harry_404_button', 'Back to Home');
+$harry_404_button_url = get_theme_mod('harry_404_button_url', 'http://localhost/harry');
+
 ?>
 <!-- error area start -->
 <section class="error__area error__bg pb-110">
@@ -67,10 +72,16 @@ get_header();
                         </svg>
                     </div>
                     <div class="error__content">
-                        <h3 class="error__title">Oops! Page not found</h3>
-                        <p>Whoops, this is embarassing. Looks like the page you were looking for wasn't found.</p>
-                        <a href="<?php echo esc_url(home_url('/')); ?>" class="tp-btn">
-                            Back to Home
+                        <?php
+                        if (!empty($harry_404_title)): ?>
+                            <h3 class="error__title"><?php echo $harry_404_title ?></h3>
+                        <?php endif ?>
+                        <?php
+                        if (!empty($harry_404_description)): ?>
+                            <p><?php echo $harry_404_description ?></p>
+                        <?php endif ?>
+                        <a href="<?php echo $harry_404_button_url ?>" class="tp-btn">
+                            <?php echo $harry_404_button ?>
                             <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16 6.97559L1 6.97559" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M9.95312 0.951L16.0031 6.975L9.95312 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
