@@ -2,17 +2,31 @@
 function harry_header()
 {
     $harry_header_deafult = get_theme_mod('harry_deafault_header_select_setting', 'header-style-1');
+    $choose_your_header_style = function_exists('get_field') ? get_field('choose_your_header_style') : null;
 
-    if ($harry_header_deafult == 'header-style-1') {
+
+    if ($choose_your_header_style == 'header-style-1') {
         get_template_part('template-parts/header/header1');
-    } elseif ($harry_header_deafult == 'header-style-2') {
+    } else if ($choose_your_header_style == 'header-style-2') {
         get_template_part('template-parts/header/header2');
-    } elseif ($harry_header_deafult == 'header-style-3') {
+    } else if ($choose_your_header_style == 'header-style-3') {
         get_template_part('template-parts/header/header3');
-    } elseif ($harry_header_deafult == 'header-style-4') {
+    } else if ($choose_your_header_style == 'header-style-4') {
         get_template_part('template-parts/header/header4');
-    } elseif ($harry_header_deafult == 'header-style-5') {
+    } else if ($choose_your_header_style == 'header-style-5') {
         get_template_part('template-parts/header/header5');
+    } else {
+        if ($harry_header_deafult == 'header-style-1') {
+            get_template_part('template-parts/header/header1');
+        } elseif ($harry_header_deafult == 'header-style-2') {
+            get_template_part('template-parts/header/header2');
+        } elseif ($harry_header_deafult == 'header-style-3') {
+            get_template_part('template-parts/header/header3');
+        } elseif ($harry_header_deafult == 'header-style-4') {
+            get_template_part('template-parts/header/header4');
+        } elseif ($harry_header_deafult == 'header-style-5') {
+            get_template_part('template-parts/header/header5');
+        }
     }
 }
 
