@@ -15,3 +15,39 @@ Text Domain: harry
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
+
+ul#menu-footer-menu-1 li {
+  display: inline-block;
+  margin-left: 20px;
+}
+.home .breadcrumb__area {
+  display: none;
+}
+img {
+  height: auto;
+}
+ul.postbox__comment.mb-95 li {
+  list-style: none;
+  margin-bottom: 20px;
+}
+#reply-title a {
+  font-size: 15px;
+  margin-left: 5px;
+  color: #f62169;
+}
+.tagcloud a {
+  font-size: 14px !important;
+}
+.slider__social-9 ul li a svg {
+  width: 40px;
+  height: 40px;
+}
+.slider__social-9 ul li a:hover {
+  background-color: #ffffff;
+  border-color: var(--tp-common-black);
+  color: var(--tp-common-white);
+}
+.portfolio__thumb-9 {
+  position: relative;
+  height: 480px !important;
+}
